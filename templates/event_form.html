@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h2>{{ titulo }}</h2>
+    <form method="POST">
+        <div>
+            <label for="nombre">Nombre del Evento:</label>
+            <input type="text" id="nombre" name="nombre" value="{{ evento.nombre if evento else '' }}" required>
+        </div>
+        <div>
+            <label for="ubicacion">Ubicación:</label>
+            <input type="text" id="ubicacion" name="ubicacion" value="{{ evento.ubicacion if evento else '' }}" required>
+        </div>
+        <div>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" value="{{ evento.fecha if evento else '' }}" required>
+        </div>
+        <div>
+            <label for="detalles">Detalles:</label>
+            <textarea id="detalles" name="detalles" required>{{ evento.detalles if evento else '' }}</textarea>
+        </div>
+        <button type="submit">{{ 'Guardar' if evento else 'Crear' }} Evento</button>
+    </form>
+    <a href="{{ url_for('events.dashboard') }}">Volver al Panel</a>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

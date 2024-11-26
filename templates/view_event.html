@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ evento.nombre }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h2>{{ evento.nombre }}</h2>
+    <p><strong>Ubicación:</strong> {{ evento.ubicacion }}</p>
+    <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
+    <p><strong>Detalles:</strong> {{ evento.detalles }}</p>
+    <p><strong>Publicado por:</strong> {{ evento.creador.nombre }}</p>
+    <a href="{{ url_for('events.dashboard') }}">Volver al Panel</a>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

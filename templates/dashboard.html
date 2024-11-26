@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido, {{ usuario.nombre }}</title>
+    <!-- En el head de cada archivo HTML -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h2>Bienvenido, {{ usuario.nombre }}!</h2>
+    <h3>Mis Eventos</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del Evento</th>
+                <th>Ubicación</th>
+                <th>Fecha</th>
+                <th>Detalles</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for evento in eventos %}
+            <tr>
+                <td>{{ evento.nombre }}</td>
+                <td>{{ evento.ubicacion }}</td>
+                <td>{{ evento.fecha }}</td>
+                <td>{{ evento.detalles }}</td>
+                <td>
+                    <a href="{{ url_for('events.view_event', id=evento.id) }}">Ver</a> |
+                    <a href="{{ url_for('events.edit_event', id=evento.id) }}">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+            <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        </tbody>
+    </table>
+    <a href="{{ url_for('events.new_event') }}">Crear Nuevo Evento</a>
+    <br>
+    <a href="{{ url_for('auth.logout') }}">Cerrar Sesión</a>
+</body>
+</html>
